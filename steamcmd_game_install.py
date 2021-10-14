@@ -16,21 +16,21 @@ def main():
         ) 
     )
 
-  game_number_local = module.params.get('game_number')
-  game_location_path_local = module.params.get('game_location_path')
-  steam_cmd_path_local = module.params.get('steam_cmd')
+    game_number_local = module.params.get('game_number')
+    game_location_path_local = module.params.get('game_location_path')
+    steam_cmd_path_local = module.params.get('steam_cmd')
 
 
-  steamcmd = pysteamcmd.Steamcmd(steam_cmd_path_local)
-  output_command = steamcmd.install_gamefiles(gameid=game_number_local, game_install_dir=game_location_path_local, user='anonymous', password=None, validate=True)
-  output_command = str(output_command)
+    steamcmd = pysteamcmd.Steamcmd(steam_cmd_path_local)
+    output_command = steamcmd.install_gamefiles(gameid=game_number_local, game_install_dir=game_location_path_local, user='anonymous', password=None, validate=True)
+    output_command = str(output_command)
 
-  if 'Sucess' in output_command:
-      resultat = 'Install complete'
-  else:
-      resultat = 'Failed \n'+output_command
+    if 'Sucess' in output_command:
+        resultat = 'Install complete'
+    else:
+        resultat = 'Failed \n'+output_command
 
-  module.exit_json(changed=False, results=resultat) 
+    module.exit_json(changed=False, results=resultat) 
 
 if __name__ == "__main__": 
     main()
