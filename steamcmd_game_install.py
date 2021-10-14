@@ -2,7 +2,7 @@
 
 # Copyright: (c) 2021, LordTSK
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-þ
+
 import pysteamcmd
 import os
 from ansible.module_utils.basic import AnsibleModule
