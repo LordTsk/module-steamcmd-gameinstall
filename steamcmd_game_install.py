@@ -3,6 +3,36 @@
 # Copyright: (c) 2021, LordTSK
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
+DOCUMENTATION='''
+module: steamcmd_game_install
+author: Victor
+description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
+
+options:
+  game_number:
+    description: Game ID in steamcmd https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
+    required: yes
+  game_location_path:
+    description: Where the game server file will be stored
+    required: yes
+  steam_cmd:
+    description: Location of the steamcmd binary
+    required: yes
+'''
+
+EXAMPLES='''
+- name: "CSGO Install"
+  steamcmd_game_install:
+    game_number: "740"
+    game_location: "/home/user-ansible/games/csgo"
+    steam_cmd: "/usr/game/steamcmd"
+'''
+
+RETURN = '''
+results:
+    description: return installation status
+'''
+
 import pysteamcmd
 import os
 from ansible.module_utils.basic import AnsibleModule
@@ -34,32 +64,3 @@ def main():
 if __name__ == "__main__": 
     main()
 
-DOCUMENTATION='''
-module: steamcmd_game_install
-author: Victor
-description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
-
-options:
-  game_number:
-    description: Game ID in steamcmd https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
-    required: yes
-  game_location_path:
-    description: Where the game server file will be stored
-    required: yes
-  steam_cmd:
-    description: Location of the steamcmd binary
-    required: yes
-'''
-
-EXAMPLES='''
-- name: "CSGO Install"
-  steamcmd_game_install:
-    game_number: "740"
-    game_location: "/home/user-ansible/games/csgo"
-    steam_cmd: "/usr/game/steamcmd"
-'''
-
-RETURN = '''
-results:
-    description: return installation status
-'''
