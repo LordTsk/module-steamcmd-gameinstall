@@ -39,7 +39,6 @@ results:
     sample: 'Install complete'
 '''
 
-import pysteamcmd
 import os
 import sys
 import platform
