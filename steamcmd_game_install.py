@@ -15,12 +15,15 @@ options:
   game_number:
     description: Game ID in steamcmd https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
     required: yes
+    type: str
   game_location_path:
     description: Where the game server file will be stored
     required: yes
-  steam_cmd:
+    type: str
+  steam_cmd_path:
     description: Location of the steamcmd binary
     required: yes
+    type: str
 '''
 
 EXAMPLES = '''
@@ -45,6 +48,7 @@ import platform
 import zipfile
 import tarfile
 import subprocess
+import vdf
 from ansible.module_utils.basic import AnsibleModule
 # urllib.urlretrieve no longer exists in python 3.
 pythonVersion = sys.version_info[0]
@@ -237,8 +241,8 @@ def main():
     game_number_local = module.params.get('game_number')
     game_location_path_local = module.params.get('game_location_path')
     steam_cmd_path_local = module.params.get('steam_cmd')
-    steamcmd = pysteamcmd.Steamcmd(steam_cmd_path_local)
-    output_command = steamcmd.install_gamefiles(gameid=game_number_local, game_install_dir=game_location_path_local, user='anonymous', password=None, validate=True)
+    steamcmd = Steamcmd(steam_cmd_path_local)
+    output_command = install_gamefiles(gameid=game_number_local, game_install_dir=game_location_path_local, user='anonymous', password=None, validate=True)
     output_command = str(output_command)
 
     if 'Sucess' in output_command:
