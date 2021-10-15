@@ -41,9 +41,9 @@ from ansible.module_utils.basic import AnsibleModule
 def main():
     module = AnsibleModule(
         argument_spec=dict(
-            game_number=dict(required=True, type='str'), 
+            game_number=dict(required=True, type='str'),
             game_location_path=dict(required=True, type='str'),
-            steam_cmd_path=dict(required=True, type='str'), 
+            steam_cmd_path=dict(required=True, type='str'),
         )
     )
 
@@ -64,4 +64,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
