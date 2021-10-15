@@ -5,9 +5,10 @@
 
 DOCUMENTATION = '''
 module: steamcmd_game_install
-author: 
+author:
   - Victor (@LordTSK)
-short_description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
+description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
+short_description: Installing steam game servers
 version_added: 1.0
 
 options:
@@ -33,7 +34,8 @@ EXAMPLES = '''
 RETURN = '''
 results:
     description: return installation status
-    return: always
+    type: str
+    returned: always
     sample: 'Install complete'
 '''
 
