@@ -5,8 +5,10 @@
 
 DOCUMENTATION = '''
 module: steamcmd_game_install
-author: Victor
-description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
+author: 
+  - Victor (@LordTSK)
+short_description: This module install any steamcmd available game as anonymous on a server with preinstalled steamcmd
+version_added: 1.0
 
 options:
   game_number:
@@ -31,6 +33,8 @@ EXAMPLES = '''
 RETURN = '''
 results:
     description: return installation status
+    return: always
+    sample: 'Install complete'
 '''
 
 import pysteamcmd
