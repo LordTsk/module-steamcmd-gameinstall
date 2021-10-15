@@ -58,7 +58,6 @@ elif pythonVersion == 2:
     from urllib import urlretrieve
 
 
-
 def main():
     module = AnsibleModule(
         argument_spec=dict(
@@ -73,7 +72,6 @@ def main():
         Base exception for the pysteamcmd package
         """
         pass
-
 
     class Steamcmd(object):
         def __init__(self, install_path):
@@ -237,10 +235,9 @@ def main():
             except subprocess.CalledProcessError:
                 raise SteamcmdException("Steamcmd was unable to run. Did you install your 32-bit libraries?")
 
-
     game_number_local = module.params.get('game_number')
     game_location_path_local = module.params.get('game_location_path')
-    steam_cmd_path_local = module.params.get('steam_cmd')
+    steam_cmd_path_local = module.params.get('steam_cmd_path')
     steamcmd = Steamcmd(steam_cmd_path_local)
     output_command = install_gamefiles(gameid=game_number_local, game_install_dir=game_location_path_local, user='anonymous', password=None, validate=True)
     output_command = str(output_command)
