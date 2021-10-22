@@ -35,7 +35,7 @@ results:
 '''
 
 import os
-from pysteamcmdwrapper import SteamCMD, SteamCMDException
+from pysteamcmdwrapper import SteamCMD
 from ansible.module_utils.basic import AnsibleModule
 
 
