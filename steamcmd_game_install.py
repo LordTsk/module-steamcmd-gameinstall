@@ -34,7 +34,7 @@ results:
     sample: 'Install complete'
 '''
 
-
+import os
 from pysteamcmdwrapper import SteamCMD, SteamCMDException
 from ansible.module_utils.basic import AnsibleModule
 
