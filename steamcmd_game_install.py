@@ -47,8 +47,8 @@ def main():
         )
     )
 
-    game_number_local = module.params.get('game_number')
-    game_location_path_local = module.params.get('game_location_path')
+    game_number_local = module.params.get("game_number")
+    game_location_path_local = module.params.get("game_location_path")
     s = SteamCMD("steamcmd")
     output_command = s.app_update(game_number_local,os.path.join(os.getcwd(),game_location_path),validate=True)
 
@@ -62,6 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
