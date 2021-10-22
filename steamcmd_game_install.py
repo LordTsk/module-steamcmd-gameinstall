@@ -51,15 +51,13 @@ def main():
     game_location_path_local = module.params.get("game_location_path")
     
     s = SteamCMD("steamcmd")
-    output_command = s.app_update(game_number_local,os.path.join(os.getcwd(),game_location_path_local),validate=True)
+    output_command = str(s.app_update(game_number_local,os.path.join(os.getcwd(),game_location_path_local),validate=True))
 
     if 'Success!' in output_command:
         resultat = 'Install complete'
+        module.exit_json(results=resultat)
     else:
         resultat = 'Failed'
-
-    module.exit_json(changed=False, results=resultat)
-
 
 if __name__ == "__main__":
     main()
