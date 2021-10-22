@@ -24,8 +24,6 @@ EXAMPLES = '''
 - name: "CSGO Install"
   steamcmd_game_install:
     game_number: "740"
-    game_location: "/home/user-ansible/games/csgo"
-    steam_cmd: "/usr/game/steamcmd"
 '''
 
 RETURN = '''
@@ -46,13 +44,11 @@ def main():
         argument_spec=dict(
             game_number=dict(required=True, type='str'),
             game_location_path=dict(required=True, type='str'),
-            steam_cmd_path=dict(required=True, type='str'),
         )
     )
 
     game_number_local = module.params.get('game_number')
     game_location_path_local = module.params.get('game_location_path')
-    steam_cmd_path_local = module.params.get('steam_cmd')
     s = SteamCMD("steamcmd")
     output_command = s.app_update(game_number_local,os.path.join(os.getcwd(),game_location_path),validate=True)
 
