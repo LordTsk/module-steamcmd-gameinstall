@@ -18,12 +18,17 @@ options:
   game_location_path:
     description: Where the game server file will be stored
     required: yes
+  steamcmd_path:
+    description: Steamcmd binary path
+    required: tes
 '''
 
 EXAMPLES = '''
 - name: "CSGO Install"
   steamcmd_game_install:
     game_number: "740"
+    game_location_path: "/home/steamserver/csgoserver"
+    steamcmd_path: ""/home/steamserver/steamcmd/steamcmd.sh"
 '''
 
 RETURN = '''
@@ -35,7 +40,8 @@ results:
 '''
 
 import os
-from pysteamcmdwrapper import SteamCMD
+import pty
+import subprocess
 from ansible.module_utils.basic import AnsibleModule
 
 
@@ -49,14 +55,27 @@ def main():
 
     game_number_local = module.params.get("game_number")
     game_location_path_local = module.params.get("game_location_path")
-    s = SteamCMD("steamcmd")
-    output_command = str(s.app_update(game_number_local,os.path.join(os.getcwd(),game_location_path_local),validate=True))
-    print(output_command)
-    if output_command == "0":
-        resultat = 'Install complete'
-        module.exit_json(changed=True, results=resultat)
-    else:
-        resultat = 'Failed to install game'
-        module.gail_json(msg=resultat)
+    steamcmd_path_local = module.params.get("steamcmd_path")
+#Steamcmd call with argumentss
+    output = ''
+    command = steamcmd_path_local+' +login anonymous +app_update '+game_number_local+' +force_install_dir '+game_location_path_local+' +quit'
+    master, slave = pty.openpty()
+    p=subprocess.Popen(command.split(), stdout=slave)
+    os.close(slave)
+#?Retriveing output stream and use conditions to get results
+    while True:
+        try:
+             # read in a chunk of data
+             data = os.read(master, 1024)
+             output += data.decode('ascii')
+             for line in output.splitlines():
+                 if "Success!" in line:
+                     resultat = "Install successfull"
+                     module.exit_json(changed=True, results=resultat)
+                 else:
+                     resultat = "Install failed"
+        except OSError as e:
+            module.fail_json(msg=resultat)
+
 if __name__ == "__main__":
     main()
