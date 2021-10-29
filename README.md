@@ -10,7 +10,7 @@ Example Playbook
   hosts: steamserver
   gather_facts: no
   tasks:
-    - name: "Installer CS1.6"
+    - name: "Install CS1.6"
       steamcmd_game_install:
         game_number: "90"
         game_location_path: "/home/steamserver/games/cs"
