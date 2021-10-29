@@ -20,7 +20,7 @@ options:
     required: yes
   steamcmd_path:
     description: Steamcmd binary path
-    required: tes
+    required: yes
 '''
 
 EXAMPLES = '''
