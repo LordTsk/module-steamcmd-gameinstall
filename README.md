@@ -14,6 +14,7 @@ Example Playbook
       steamcmd_game_install:
         game_number: "90"
         game_location_path: "/home/steamserver/games/cs"
+        steamcmd_path: "/home/steamserver/steamcmd/steamcmd.sh"
       register: resultat
 ```
 
