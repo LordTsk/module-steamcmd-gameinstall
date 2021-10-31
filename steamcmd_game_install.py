@@ -50,6 +50,7 @@ def main():
         argument_spec=dict(
             game_number=dict(required=True, type='str'),
             game_location_path=dict(required=True, type='str'),
+            steamcmd_path=dict(required=True, type='str'),
         )
     )
 
