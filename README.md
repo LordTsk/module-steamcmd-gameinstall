@@ -12,7 +12,7 @@ Ansible 2.9+
 
 Options
 ----------------
-**game_number** : This is the AppID of the game server you want to install, you can find a list here <https://developer.valvesoftware.com/wiki/Dedicated_Servers_List>\
+**game_number** : This is the AppID of the game server you want to install\
 **game_location_path** : Where will be installed the server game files, read and write right required to the directory\
 **steamcmd_path** : Where is your steamcmd.sh installed
 
@@ -41,3 +41,7 @@ License
 -------
 
 GNU GPLv3
+
+Links
+-------
+List of AppID <https://developer.valvesoftware.com/wiki/Dedicated_Servers_List>
