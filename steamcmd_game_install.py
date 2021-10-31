@@ -3,6 +3,7 @@
 # Copyright: (c) 2021, LordTSK
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
+#Ansible formated documentation
 DOCUMENTATION = '''
 module: steamcmd_game_install
 author:
@@ -39,6 +40,7 @@ results:
     sample: 'Install complete'
 '''
 
+#Import of python module and ansible python module for return handling
 import os
 import pty
 import subprocess
@@ -47,28 +49,30 @@ from ansible.module_utils.basic import AnsibleModule
 
 def main():
     module = AnsibleModule(
+        #Retrieving ansible options
         argument_spec=dict(
             game_number=dict(required=True, type='str'),
             game_location_path=dict(required=True, type='str'),
             steamcmd_path=dict(required=True, type='str'),
         )
     )
-
+    #Get ansible option as local variable for easy handling
     game_number_local = module.params.get("game_number")
     game_location_path_local = module.params.get("game_location_path")
     steamcmd_path_local = module.params.get("steamcmd_path")
-#Steamcmd call with argumentss
+    #Steamcmd.sh call with arguments
     output = ''
     command = steamcmd_path_local+' +login anonymous +app_update '+game_number_local+' +force_install_dir '+game_location_path_local+' +quit'
     master, slave = pty.openpty()
     p=subprocess.Popen(command.split(), stdout=slave)
     os.close(slave)
-#?Retriveing output stream and use conditions to get results
+#Retriveing output stream of steamcmd and use conditions to get results
     while True:
         try:
              # read in a chunk of data
              data = os.read(master, 1024)
              output += data.decode('ascii')
+             #Processing output of steamcmd.sh to get installation success flag
              for line in output.splitlines():
                  if "Success!" in line:
                      resultat = "Install successfull"
