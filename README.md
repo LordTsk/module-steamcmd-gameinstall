@@ -6,8 +6,8 @@ This module have only been tested on Ubuntu LTS20.04
 Pre-requisites
 ----------------
 Ubuntu 20.04 LTS\
-steamcmd installed <https://developer.valvesoftware.com/wiki/SteamCMD>\
-python 3.X\
+Steamcmd installed <https://developer.valvesoftware.com/wiki/SteamCMD>\
+Python 3.X\
 Ansible 2.9+
 
 Options
