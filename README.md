@@ -8,13 +8,13 @@ Pre-requisites
 Ubuntu 20.04 LTS\
 steamcmd installed <https://developer.valvesoftware.com/wiki/SteamCMD>\
 python 3.X\
-Ansible 2.9+\
+Ansible 2.9+
 
 Options
 ----------------
-game_number : This is the AppID of the game server you want to install, you can find a list here <https://developer.valvesoftware.com/wiki/Dedicated_Servers_List>\
-game_location_path : Where will be installed the server game files, you must avec read and write access to the directory\
-steamcmd_path : Where is your steamcmd.sh installed\
+**game_number** : This is the AppID of the game server you want to install, you can find a list here <https://developer.valvesoftware.com/wiki/Dedicated_Servers_List>\
+**game_location_path** : Where will be installed the server game files, read and write right required to the directory\
+**steamcmd_path** : Where is your steamcmd.sh installed
 
 Example Playbook
 ----------------
