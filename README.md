@@ -1,7 +1,7 @@
 Ansible module steamcmd-install-game
 =====================
 This ansible module install and/or update any steamcmd available gamserver at a given location\
-This module have only been tested on Ubuntu LTS20.04
+This module have only been tested with bellow pre-requisites
 
 Pre-requisites
 ----------------
