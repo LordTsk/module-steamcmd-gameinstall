@@ -12,9 +12,9 @@ Ansible 2.9+
 
 Options
 ----------------
-**game_number** : This is the AppID of the game server you want to install\
+**game_id** : This is the AppID of the game server you want to install, list at the end of README.md\
 **game_location_path** : Where will be installed the server game files, read and write right required to the directory\
-**steamcmd_path** : Where is your steamcmd.sh installed
+**steamcmd_path** : Where your steamcmd.sh is installed
 
 Example Playbook
 ----------------
@@ -26,7 +26,7 @@ Example Playbook
   tasks:
     - name: "Install CS1.6"
       steamcmd_game_install:
-        game_number: "90"
+        game_id: "90"
         game_location_path: "/home/user/games/cs"
         steamcmd_path: "/home/user/steamcmd/steamcmd.sh"
       register: resultat
@@ -34,7 +34,7 @@ Example Playbook
 
 Contribute & Contact
 -----
-To contribute follow ther guide at <https://github.com/firstcontributions/first-contributions>\
+To contribute follow the guide at <https://github.com/firstcontributions/first-contributions>\
 Contact me at <git@hallynck.com>  
 
 License
