@@ -51,13 +51,13 @@ def main():
     module = AnsibleModule(
         #Retrieving ansible options
         argument_spec=dict(
-            game_number=dict(required=True, type='str'),
+            game_id=dict(required=True, type='str'),
             game_location_path=dict(required=True, type='str'),
             steamcmd_path=dict(required=True, type='str'),
         )
     )
     #Get ansible option as local variable for easy handling
-    game_number_local = module.params.get("game_number")
+    game_number_local = module.params.get("game_id")
     game_location_path_local = module.params.get("game_location_path")
     steamcmd_path_local = module.params.get("steamcmd_path")
     #Steamcmd.sh call with arguments
