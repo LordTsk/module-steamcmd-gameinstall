@@ -37,7 +37,7 @@ results:
     description: return installation status
     type: str
     returned: always
-    sample: 'Install Succesfull'
+    sample: 'Install succesfull'
 '''
 
 #Import of python module and ansible python module for return handling
