@@ -13,7 +13,7 @@ short_description: Installing steam game servers
 version_added: 1.0
 
 options:
-  game_number:
+  game_id:
     description: Game ID in steamcmd https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
     required: yes
   game_location_path:
@@ -37,7 +37,7 @@ results:
     description: return installation status
     type: str
     returned: always
-    sample: 'Install complete'
+    sample: 'Install Succesfull'
 '''
 
 #Import of python module and ansible python module for return handling
