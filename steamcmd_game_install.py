@@ -79,7 +79,7 @@ def main():
                      module.exit_json(changed=True, results=resultat)
                  else:
                      resultat = "Install failed"
-                     module.exit_json(changed=False, results=resultat)
+                     module.fail_json(msg=resultat)
         except OSError as e:
             resultat = "Install failed"
             module.fail_json(msg=resultat)
