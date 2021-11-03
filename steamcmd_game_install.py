@@ -27,7 +27,7 @@ options:
 EXAMPLES = '''
 - name: "CSGO Install"
   steamcmd_game_install:
-    game_number: "740"
+    game_id: "740"
     game_location_path: "/home/steamserver/csgoserver"
     steamcmd_path: ""/home/steamserver/steamcmd/steamcmd.sh"
 '''
