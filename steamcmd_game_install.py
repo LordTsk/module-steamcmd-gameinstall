@@ -80,9 +80,6 @@ def main():
                  else:
                      resultat = "Install failed"
                      module.fail_json(msg=resultat)
-        except OSError as e:
-            resultat = "Install failed"
-            module.fail_json(msg=resultat)
 
 if __name__ == "__main__":
     main()
