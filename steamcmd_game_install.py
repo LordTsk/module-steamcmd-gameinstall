@@ -62,7 +62,7 @@ def main():
     steamcmd_path_local = module.params.get("steamcmd_path")
     #Steamcmd.sh call with arguments
     output = ''
-    command = steamcmd_path_local+' +login anonymous +force_install_dir '+game_location_path_local '+app_update '+game_number_local+' +quit'
+    command = steamcmd_path_local+' +login anonymous +force_install_dir '+game_location_path_local+' +app_update '+game_number_local+' +quit'
     master, slave = pty.openpty()
     p=subprocess.Popen(command.split(), stdout=slave)
     os.close(slave)
