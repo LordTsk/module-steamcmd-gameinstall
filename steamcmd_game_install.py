@@ -27,7 +27,7 @@ options:
 EXAMPLES = '''
 - name: "CSGO Install"
   steamcmd_game_install:
-    game_id: "740"
+    game_number: "740"
     game_location_path: "/home/steamserver/csgoserver"
     steamcmd_path: ""/home/steamserver/steamcmd/steamcmd.sh"
 '''
@@ -37,7 +37,7 @@ results:
     description: return installation status
     type: str
     returned: always
-    sample: 'Install succesfull'
+    sample: 'Install complete'
 '''
 
 #Import of python module and ansible python module for return handling
@@ -62,7 +62,7 @@ def main():
     steamcmd_path_local = module.params.get("steamcmd_path")
     #Steamcmd.sh call with arguments
     output = ''
-    command = steamcmd_path_local+' +login anonymous +app_update '+game_number_local+' +force_install_dir '+game_location_path_local+' +quit'
+    command = steamcmd_path_local+' +login anonymous +force_install_dir '+game_location_path_local+'+app_update '+game_number_local+' +quit'
     master, slave = pty.openpty()
     p=subprocess.Popen(command.split(), stdout=slave)
     os.close(slave)
@@ -79,7 +79,8 @@ def main():
                      module.exit_json(changed=True, results=resultat)
                  else:
                      resultat = "Install failed"
-                     module.fail_json(msg=resultat)
+        except OSError as e:
+            module.fail_json(msg=resultat)
 
 if __name__ == "__main__":
     main()
